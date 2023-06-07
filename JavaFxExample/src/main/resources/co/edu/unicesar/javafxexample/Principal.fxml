@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.unicesar.javafxexample.PrincipalController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="279.0" style="-fx-background-color: #3361FF;">
+         <children>
+            <Pane prefHeight="250.0" prefWidth="279.0">
+               <children>
+                  <ImageView fitHeight="179.0" fitWidth="229.0" layoutX="26.0" layoutY="40.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../img/logo.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="btnAutobus" mnemonicParsing="false" onAction="#clickAutobus" prefHeight="61.0" prefWidth="277.0" text="Registro de autobuses" />
+            <Button fx:id="btnTractor" mnemonicParsing="false" onAction="#clickTractor" prefHeight="61.0" prefWidth="277.0" text="Registro de Tractor" />
+            <Button fx:id="btnConsulta" mnemonicParsing="false" onAction="#clickConsulta" prefHeight="61.0" prefWidth="277.0" text="Consulta" />
+         </children>
+      </VBox>
+      <StackPane fx:id="stackPanePpal" prefHeight="600.0" prefWidth="621.0" />
+   </children>
+</HBox>

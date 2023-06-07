@@ -75,9 +75,19 @@ public class Autobus extends Vehiculo {
 
     @Override
     public String getInfo() {
-        return " || " + "Precio KM="+ this.precioKm + 
+        return " " + "Precio KM="+ this.precioKm + 
                " || " + "Km Renta=" + this.kmRenta + 
                " || " + "Km Devolucion="+this.kmDevolucion;       
+    }
+    
+    @Override
+    public String getDataFileFormat(){
+            return this.getPlaca()+";"+
+                   "A"+";"+
+                   this.precioKm+";" +
+                   this.kmRenta+";"+
+                   this.kmDevolucion+";" +
+                   this.calcularImporteRenta();
     }
     
 }

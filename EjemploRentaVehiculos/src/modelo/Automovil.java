@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import persistencia.Archivable;
+
 /**
  *
  * @author Jairo F
  */
-public class Automovil extends Vehiculo{
+public class Automovil extends Vehiculo {
     
     private double precioHora;
     private int horasRenta;
@@ -59,6 +61,11 @@ public class Automovil extends Vehiculo{
     public String getInfo() {
         return " || " +  "Precio hora: " + this.precioHora + 
                " || " +  "No Horas:" + this.horasRenta; 
+    }
+
+    @Override
+    public String getDataFileFormat() {
+        return null;
     }
     
     

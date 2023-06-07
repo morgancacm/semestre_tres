@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -25,11 +27,9 @@ public class JDRegistro extends JDialog {
 
     private JLabel lbPlaca, lbPrecioKm, lbKmRenta, lbKmDev, lbTipoVehiculo;
     private JLabel lbPrecioDia, lbFechaRenta, lbFechaDev;
-    private JLabel lbHorasRentadas, lbValorHora;
     
     private JTextField txtPlaca, txtPrecioKm, txtKmRenta, txtKmDevolucion;
-    private JFormattedTextField txtPrecioDia, txtValorHora, txtFechaRenta, txtFechaDevolucion;
-    private JTextField txtHorasRentadas;
+    private JFormattedTextField txtPrecioDia, txtFechaRenta, txtFechaDevolucion;
     
     private JComboBox cmbTipoVehiculo;
     
@@ -60,7 +60,9 @@ public class JDRegistro extends JDialog {
     private void panelBotones() {
 
         this.btnGuardar = new JButton("Guardar");
+        this.btnGuardar.addActionListener(new clickBotonGuardar());
         this.btnCancelar = new JButton("Cancelar");
+        this.btnCancelar.addActionListener(new clickBotonCancelar());
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 1, 5, 5));
@@ -77,12 +79,10 @@ public class JDRegistro extends JDialog {
     }
 
     private void panelDatos() {
-        
+
         this.lbPlaca = new JLabel("Placa: ");
         this.lbTipoVehiculo = new JLabel("Tipo vehiculo: ");
-        this.lbHorasRentadas = new JLabel("Horas rentadas: ");
-        this.lbValorHora = new JLabel("Valor de hora: ");
-        this.lbPrecioKm = new JLabel("Precio x Km: ");
+        this.lbPrecioKm = new JLabel("precio x Km: ");
         this.lbKmRenta = new JLabel("Km de renta: ");
         this.lbKmDev = new JLabel("Km de devolucion: ");
         this.lbPrecioDia = new JLabel("Precio x Dia: ");
@@ -90,14 +90,11 @@ public class JDRegistro extends JDialog {
         this.lbFechaDev = new JLabel("Fecha de devolucion: ");
 
         this.txtPlaca = new JTextField();
-        this.txtHorasRentadas = new JTextField();
         this.txtPrecioKm= new JTextField();
         this.txtKmRenta= new JTextField();
         this.txtKmDevolucion= new JTextField();
         
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        this.txtValorHora = new JFormattedTextField(currencyFormat);
-        this.txtValorHora.setValue(0);
         this.txtPrecioDia = new JFormattedTextField(currencyFormat);
         this.txtPrecioDia.setValue(0);
         this.txtFechaRenta= new JFormattedTextField();
@@ -106,25 +103,19 @@ public class JDRegistro extends JDialog {
         this.txtFechaDevolucion.setValue(new Date());
         
         this.cmbTipoVehiculo = new JComboBox();
+        this.cmbTipoVehiculo.addActionListener(new clickComboTipo());
         this.cmbTipoVehiculo.addItem("Autobus");
-        this.cmbTipoVehiculo.addItem("Automovil");
         this.cmbTipoVehiculo.addItem("Tractor");
         
 
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(10, 2, 5, 5));
+        panel.setLayout(new GridLayout(8, 2, 5, 5));
         panel.add(this.lbPlaca);
         panel.add(this.txtPlaca);
 
         panel.add(this.lbTipoVehiculo);
         panel.add(this.cmbTipoVehiculo);
-        
-        panel.add(this.lbHorasRentadas);
-        panel.add(this.txtHorasRentadas);
-        
-        panel.add(this.lbValorHora);
-        panel.add(this.txtValorHora);
         
         panel.add(this.lbPrecioKm);
         panel.add(this.txtPrecioKm);
@@ -149,5 +140,46 @@ public class JDRegistro extends JDialog {
         this.contenedor.add(panel, BorderLayout.CENTER);
 
     }
+    
+    class clickBotonGuardar implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    
+    }
+    
+    class clickBotonCancelar implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    
+    }
+    
+    class clickComboTipo implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            activarComponentes();
+        }
+    
+    }
+    
+    public void activarComponentes(){
+        String selected = this.cmbTipoVehiculo.getSelectedItem().toString();
+        boolean tipo = selected.equals("Autobus");
+        
+        this.txtPrecioKm.setEnabled(!tipo);
+        this.txtKmRenta.setEnabled(!tipo);
+        this.txtKmDevolucion.setEnabled(!tipo);
+        
+        this.txtPrecioDia.setEnabled(tipo);
+        this.txtFechaRenta.setEnabled(tipo);
+        this.txtFechaDevolucion.setEnabled(tipo);
+    
+    }
 }

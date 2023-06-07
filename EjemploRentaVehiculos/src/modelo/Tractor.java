@@ -85,5 +85,14 @@ public class Tractor extends Vehiculo {
                " || " + "Fecha Renta=" + this.fechaRenta.toString() + 
                " || " + "Fecha Devolucion="+this.fechaDevolucion.toString();       
     }
+
+    @Override
+    public String getDataFileFormat() {
+        return this.getPlaca() + "; " + "A" + "; " +
+            this.precioDia + "; " +
+            this + "; " +
+            this.fechaDevolucion + "; " +
+            this.calcularImporteRenta();
+    }
     
 }

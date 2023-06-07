@@ -4,6 +4,7 @@
  */
 package persistencia;
 
+import java.io.IOException;
 import java.util.List;
 import modelo.Vehiculo;
 
@@ -12,7 +13,7 @@ import modelo.Vehiculo;
  * @author Jairo F
  */
 public interface IRenta {
-    void registrarVehiculo(Vehiculo v);
-    Vehiculo buscarVehiculoPorPlaca(String placa);
-    List<Vehiculo> listRentados();
+    void registrarVehiculo(Vehiculo v) throws IOException;
+    Vehiculo buscarVehiculoPorPlaca(String placa) throws IOException;
+    List<Vehiculo> listRentados() throws IOException;
 }

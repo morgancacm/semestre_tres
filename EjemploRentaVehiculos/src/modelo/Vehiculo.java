@@ -4,11 +4,13 @@
  */
 package modelo;
 
+import persistencia.Archivable;
+
 /**
  *
  * @author Jairo F
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Archivable {
     
     private String placa;
     private boolean estado;
